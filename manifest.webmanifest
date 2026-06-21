@@ -1,0 +1,14 @@
+{
+  "name": "Suivi Sport",
+  "short_name": "Suivi Sport",
+  "description": "Programmes, planification, séances et suivi sportif hors ligne.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F4F6F3",
+  "theme_color": "#F4F6F3",
+  "lang": "fr",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
