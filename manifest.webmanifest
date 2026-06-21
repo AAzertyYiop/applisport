@@ -1,0 +1,14 @@
+{
+  "name": "SuiviSport",
+  "short_name": "SuiviSport",
+  "description": "Journal sportif personnel, local et hors ligne.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#101a17",
+  "theme_color": "#101a17",
+  "lang": "fr",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
