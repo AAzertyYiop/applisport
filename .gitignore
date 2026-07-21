@@ -1,0 +1,11 @@
+.DS_Store
+DerivedData/
+.derivedData/
+.build/
+.swift-cache/
+xcuserdata/
+*.xcuserstate
+web/node_modules/
+web/dist/
+web/.vite/
+web/*.tsbuildinfo

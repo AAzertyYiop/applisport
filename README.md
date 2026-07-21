@@ -1,32 +1,68 @@
 # SuiviSport
 
-SuiviSport est une application web installable qui reprend les fonctions principales de l’application Swift : programmes de musculation et de course, séances et exercices, calendrier, séance en direct, historique et suivi de progression. Elle fonctionne sur téléphone et ordinateur, y compris hors ligne, sans compte, serveur, clé API ni abonnement développeur Apple.
+SuiviSport contient l'application iOS SwiftUI existante et une nouvelle application web React dans `web/`.
 
-## Lancer localement
+## Application web
 
-Un simple serveur statique suffit :
+La version web est une vraie application de suivi sportif utilisable sans backend. Les donnees sont conservees dans le navigateur avec `localStorage` et des donnees de demonstration sont chargees au premier lancement.
 
-```sh
-python3 -m http.server 8000
+Fonctionnalites principales :
+
+- tableau de bord du jour avec seances prevues, lancement rapide et historique recent ;
+- programmes musculation et course avec creation, edition et suppression ;
+- calendrier mensuel pour planifier musculation et course ;
+- seance de musculation en direct avec series, poids, reps, RPE, notes et timer de repos ;
+- suivi course avec sorties planifiees, sorties realisees, historique et statistiques 7/30 jours ;
+- progression avec filtres, graphiques, records personnels et exercices les plus travailles ;
+- export CSV des seances de musculation.
+
+## Lancer en local
+
+```bash
+cd web
+npm install
+npm run dev
 ```
 
-Ouvrir ensuite `http://localhost:8000`.
+Vite affiche ensuite l'URL locale, generalement `http://127.0.0.1:5173/`.
 
-## Publier avec GitHub Pages
+## Builder
 
-1. Pousser le projet sur un dépôt GitHub dont la branche principale est `main`.
-2. Dans **Settings → Pages → Build and deployment**, choisir **GitHub Actions**.
-3. Le workflow `Déployer SuiviSport sur GitHub Pages` publie automatiquement chaque modification de `main`.
-4. Sur iPhone, ouvrir l’adresse dans Safari puis choisir **Partager → Sur l’écran d’accueil**.
+```bash
+cd web
+npm run build
+```
 
-Les données restent dans le stockage du navigateur de l’appareil. Utiliser **••• → Exporter toutes les données** pour faire une sauvegarde ou transférer les données vers un autre appareil.
+Le build statique est genere dans `web/dist/`.
+
+## Deploiement GitHub Pages
+
+Le projet Vite est configure avec `base: "/applisport/"`, adapte a une publication GitHub Pages depuis le repository GitHub `AAzertyYiop/applisport`.
+
+Le workflow `.github/workflows/deploy-web.yml` publie automatiquement l'application web a chaque push sur `main` qui modifie `web/**` ou le workflow.
+
+Pour activer GitHub Pages :
+
+1. Aller dans **Settings -> Pages** du repository GitHub.
+2. Choisir **Source -> GitHub Actions**.
+3. Pousser sur `main`.
+
+L'URL publique sera :
+
+```text
+https://aazertyyiop.github.io/applisport/
+```
+
+## Donnees
+
+Les donnees restent dans le stockage du navigateur de l'appareil. Le bouton de reinitialisation recharge les donnees de demonstration. L'export CSV permet de sauvegarder les seances de musculation.
 
 ## Architecture
 
-- HTML, CSS et JavaScript natifs, sans étape de compilation.
-- `localStorage` pour les programmes, la planification, les séances et les statistiques.
-- Service worker pour le fonctionnement hors ligne.
-- GitHub Actions pour le déploiement sur GitHub Pages.
+- React, TypeScript et Vite.
+- `localStorage` pour les programmes, la planification, les seances et les statistiques.
+- `lucide-react` pour les icones.
+- `recharts` pour les graphiques.
+- GitHub Actions pour le deploiement sur GitHub Pages.
 
-Le projet Xcode reste indépendant. Il n’est pas nécessaire pour utiliser ou publier l’application web.
-# applisport
+Le projet Xcode reste independant. Il n'est pas necessaire pour utiliser ou publier l'application web.
